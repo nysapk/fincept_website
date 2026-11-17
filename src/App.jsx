@@ -1,73 +1,110 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
+import finceptHeader from "./assets/branding/header_lightmode.png";
+import finceptLogo from "./assets/branding/logo_lightmode.png"
+
+import presidentheadshot from "./assets/headshots/Anubhuti_Mittal_Headshot.PNG"
+import evpheadshot from "./assets/headshots/Colleen_Li_Headshot.png"
+import treasurerheadshot from "./assets/headshots/VincentLiHeadShot.png"
+import vpirheadshot from "./assets/headshots/Nysa_Kumar_Headshot.png"
+// import vpcrheadshot from ...
+import vpoheadshot from "./assets/headshots/AnaiysaaDeswalHeadshot.JPEG"
+import vppdheadshot from "./assets/headshots/TatsuyaGreinerHeadshot.jpeg"
+
+import wabtecLogo from "./assets/company_logos/wabtec.png"
+import axisBankLogo from "./assets/company_logos/axisbank.png"
+import oracleLogo from "./assets/company_logos/oracle.png"
 
 const pillars = [
   {
-    title: "Industry & professional exposure",
-    text: "Explore the people, careers, and ideas shaping modern finance.",
-    details: ["Career panels across finance and fintech", "Alumni and industry mentorship", "Networking with finance and technology organizations", "Workshops on specialized careers and emerging trends"],
+    title: "Industry Exposure",
+    text: "Connect with the people, careers, and ideas shaping modern finance.",
+    details: [
+      "Opportunities with Purdue's Fintech Center",
+      "Guest speaker events featuring fintech professionals",
+      "Exposure to real-world industry practices and career pathways",
+      "Networking with finance and technology organizations",
+      "Workshops on specialized careers and emerging trends"
+    ],
   },
   {
     title: "Experiential learning",
-    text: "Work on practical, collaborative projects or take part in case competitions.",
-    details: ["Industry-judged finance and fintech case challenges", "Quantitative finance and financial modeling workshops", "Algorithmic trading, investment, and fintech simulations", "Projects inspired by real-world financial problems"],
+    text: "Develop practical, technical, and communication skills through hands-on experiences.",
+    details: [
+      "Industry-partnered projects addressing real-world financial problems",
+      "Industry-judged fintech case competitions",
+      "Algorithmic trading, investment, and fintech simulations",
+      "Collaborative workshops and technical challenges"
+    ],
   },
   {
-    title: "Community & social development",
-    text: "Grow with an interdisciplinary community that learns together.",
-    details: ["Member socials and collaborative activities", "Leadership development and interdisciplinary connections"],
+    title: "Community",
+    text: "Build lasting connections in an interdisciplinary community that learns together.",
+    details: [
+      "Peer and professional mentorship programs",
+      "Collaborations with other student organizations",
+      "Social events and community-building activities",
+      "Opportunities to develop leadership and teamwork skills",
+    ],
   },
 ];
 
 const teamMembers = [
   {
-    name: "Anu",
+    name: "Anu Mittal",
     role: "President",
+    image: presidentheadshot,
   },
   {
-    name: "Colleen",
+    name: "Colleen Li",
     role: "Executive Vice President",
+    image: evpheadshot,
   },
   {
-    name: "Vincent",
+    name: "Vincent Li",
     role: "Treasurer",
+    image: treasurerheadshot,
   },
   {
-    name: "Nysa",
+    name: "Nysa Kumar",
     role: "VP of Industry Relations",
+    image: vpirheadshot,
   },
   {
-    name: "Rishi",
+    name: "Rishi Rao",
     role: "VP of Campus Relations",
+    // image: vpcrheadshot,
   },
   {
-    name: "Tatsuya",
+    name: "Tatsuya Greiner",
     role: "VP of Professional Development",
+    image: vppdheadshot,
   },
   {
-    name: "Anaiysaa",
+    name: "Anaiysaa Deswal",
     role: "VP of Outreach",
+    image: vpoheadshot,
   },
 ];
 
 const companies = [
   { name: "Galaxy", domain: "galaxy.com" },
-  { name: "Axis Bank", domain: "axisbank.com" },
+  { name: "Axis Bank", domain: "axisbank.com", logo: axisBankLogo},
   { name: "Microsoft", domain: "microsoft.com" },
-  { name: "Oracle", domain: "oracle.com" },
+  { name: "Oracle", domain: "oracle.com", logo: oracleLogo},
   { name: "Barclays", domain: "barclays.com" },
   { name: "IBM", domain: "ibm.com" },
   { name: "Adapts.ai", domain: "adapts.ai" },
   { name: "Quadrant Technologies", domain: "quadranttechnologies.com" },
-  { name: "Nextech", domain: "nextech.com" },
+  { name: "Nextech", domain: "nextech.org" },
   { name: "Psycray", domain: "psycray.com" },
-  { name: "Wabtec Corporation", domain: "wabtec.com" },
+  { name: "Wabtec Corporation", domain: "wabtec.com", logo: wabtecLogo },
 ];
 
 const decemberEvents = [
   { day: 2, type: "callout", number: 1, title: "Callout #1", time: "6–7 PM" },
   { day: 3, type: "callout", number: 2, title: "Callout #2", time: "6–7 PM" },
-  { day: 6, type: "deadline", title: "Applications due" },
+  { day: 5, type: "deadline", title: "Applications due" },
 ];
 
 const applications = [
@@ -107,10 +144,11 @@ function ArrowIcon({ diagonal = false }) {
 
 function Wordmark({ footer = false }) {
   return (
-    <span className={footer ? "wordmark footer-wordmark" : "wordmark"}>
-      <span className="brand-mark" aria-hidden="true"><span /><span /><span /></span>
-      <span>fincept<span className="wordmark-period">.</span></span>
-    </span>
+    <img
+      src={finceptHeader}
+      alt="Fincept"
+      className={footer ? "wordmark footer-wordmark" : "wordmark"}
+    />
   );
 }
 
@@ -144,7 +182,7 @@ function HomePage() {
           <h1 className="hero-title">Fincept</h1>
           <p className="hero-affiliation">at Purdue University</p>
           <p className="hero-description">
-            Fincept is a club at Purdue focused on financial technology and the systems shaping modern finance. We bring together students from diverse disciplines to explore emerging opportunities in fintech, take on projects and case competitions, and build strong professional connections.
+            Fincept is a student organization at Purdue focused on financial technology and the systems shaping modern finance. We bring together students from diverse disciplines to explore emerging opportunities in fintech, take on projects and case competitions, and build strong professional connections.
           </p>
           <div className="hero-actions">
             <Link className="text-link" to="/about">Explore Fincept <span>↓</span></Link>
@@ -212,7 +250,12 @@ function AboutPage() {
     <>
       <PageIntro title="Explore" emphasis="modern finance." description="Fincept brings Purdue students together to explore the people, ideas, and careers changing the financial industry." plainEmphasis />
       <section className="about-story section-wrap">
-        <div className="about-story-mark">F<span>.</span></div>
+        <div className="about-story-mark">
+          <img
+            src={finceptLogo}
+            alt="Fincept"
+          />
+        </div>
         <div>
           <Kicker>OUR MISSION</Kicker>
           <h2>A wider view<br />of the industry.</h2>
@@ -253,7 +296,10 @@ function AboutPage() {
           {companies.map((company) => (
             <div className="company-card" key={company.name}>
               <img
-                src={`https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(`https://${company.domain}`)}&sz=128`}
+                src={
+                  company.logo ||
+                  `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(`https://${company.domain}`)}&sz=128`
+                }
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -275,9 +321,12 @@ function TeamPage() {
         <div className="team-grid team-placeholder-grid">
           {teamMembers.map((member) => (
             <article className="team-card team-placeholder" key={member.role}>
-              <div className="team-portrait" role="img" aria-label={`Photo placeholder for ${member.name || member.role}`}>
-                {member.name && <span className="team-initials" aria-hidden="true">{member.name.slice(0, 1)}</span>}
-                <span className="team-photo-note">PHOTO</span>
+              <div className="team-portrait">
+                <img
+                  src={member.image}
+                  alt={`Portrait of ${member.name}`}
+                  loading="lazy"
+                />
               </div>
               <h3 className="team-member-name">{member.name}</h3>
               <p className="team-position">{member.role}</p>
@@ -428,7 +477,7 @@ function ApplyPage() {
           ))}
         </div>
         <div className="apply-dates">
-          <p><span>APPLICATIONS DUE</span><strong>December 6</strong></p>
+          <p><span>APPLICATIONS DUE</span><strong>December 5</strong></p>
           <p><span>DECISIONS OUT</span><strong>December 9</strong></p>
         </div>
       </section>
@@ -453,9 +502,9 @@ function ContactPage() {
           <h2>Contact details</h2>
           <p>For membership, event, or partnership questions, use the contact links below or send the club a message.</p>
           <div className="contact-socials">
-            <a href="mailto:fincept@purdue.edu"><span>EMAIL</span><strong>fincept@purdue.edu</strong><small>placeholder</small></a>
-            <a href="https://www.linkedin.com/company/fincept-purdue/" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Fincept at Purdue</strong><small>placeholder profile</small></a>
-            <a href="https://www.instagram.com/fincept.purdue/" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@fincept.purdue</strong><small>placeholder profile</small></a>
+            <a href="mailto:fincept@purdue.edu"><span>EMAIL</span><strong>fincept.purdue@gmail.com</strong></a>
+            <a href="https://www.linkedin.com/company/fincept-purdue/" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>FINCEPT Purdue</strong></a>
+            <a href="https://www.instagram.com/fincept.purdue/" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@fincept.purdue</strong></a>
           </div>
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -526,7 +575,7 @@ function SiteLayout() {
       <ScrollToTop />
       {announcementVisible && (
         <aside className="application-banner" aria-label="Application announcement">
-          <Link to="/apply">Applications are live now <span>Apply by December 6</span><ArrowIcon /></Link>
+          <Link to="/apply">Applications are live! <span>Apply by December 5</span><ArrowIcon /></Link>
           <button type="button" aria-label="Dismiss application announcement" onClick={() => setAnnouncementVisible(false)}>×</button>
         </aside>
       )}
@@ -562,7 +611,6 @@ function SiteLayout() {
         </Routes>
       </main>
       <footer className="site-footer site-footer-purple">
-        <Link to="/" aria-label="Fincept home"><Wordmark footer /></Link>
         <span className="footer-note">Explore what’s next in finance.</span>
         <div className="footer-links">
           <Link to="/about">About</Link>

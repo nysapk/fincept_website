@@ -17,6 +17,23 @@
   --serif: "Instrument Serif", Georgia, serif;
 }
 
+/* Fincept palette from the supplied moodboard. */
+:root {
+  --paper: #FFFEF9;
+  --ink: #260325;
+  --green: #031B04;
+  --lime: #67A26A;
+  --muted: #526553;
+  --line: #C3E0C5;
+  --sage: #67A26A;
+  --tea: #C3E0C5;
+  --amethyst: #AD7AA4;
+  --lavender: #F1E8F2;
+  --violet: #260325;
+  background: var(--paper);
+  color: var(--ink);
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 85px; }
 body { margin: 0; min-width: 320px; }
@@ -33,6 +50,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .site-header {
+  background: #fffef9;
   height: 82px;
   padding: 0 7.3%;
   display: flex;
@@ -40,8 +58,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
 }
-.wordmark { display: inline-flex; align-items: center; gap: 9px; font-size: 24px; font-weight: 700; letter-spacing: -.08em; }
-.wordmark-period { color: #8aa645; }
+.wordmark {
+  display: block;
+  width: auto;
+  height: clamp(50px, 3vw, 60px);
+  max-width: 100%;
+  object-fit: contain;
+}
+.footer-wordmark {
+  height: clamp(50px, 2.5vw, 60px);
+}
 .brand-mark { width: 22px; height: 24px; display: flex; align-items: flex-end; gap: 3px; }
 .brand-mark span { display: block; width: 5px; background: var(--green); transform: skew(-25deg); }
 .brand-mark span:nth-child(1) { height: 11px; }
@@ -250,7 +276,26 @@ h1, h2, h3, p { margin-top: 0; }
 .page-intro h1 em, .not-found h1 em { color: #81964d; font-family: var(--serif); font-weight: 500; letter-spacing: -.065em; }
 .page-intro > p { max-width: 500px; margin: 21px 0 0; color: #687168; font-size: 16px; line-height: 1.8; }
 .about-story { min-height: 435px; padding-top: 82px; padding-bottom: 86px; display: grid; grid-template-columns: .65fr 1.35fr; gap: 8%; align-items: start; }
-.about-story-mark { width: 150px; height: 150px; display: grid; place-items: center; color: #f3f2eb; background: var(--green); font-size: 92px; font-weight: 500; letter-spacing: -.1em; }
+.about-story-mark {
+  width: clamp(175px, 22vw, 275px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+.about-story-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
 .about-story-mark span { color: var(--lime); }
 .about-story .section-kicker { margin: 6px 0 20px; }
 .about-story h2, .team-heading h2, .contact-details h2 { margin: 0 0 20px; font-size: clamp(37px, 4.5vw, 57px); line-height: 1.08; letter-spacing: -.065em; font-weight: 500; }
@@ -308,9 +353,23 @@ h1, h2, h3, p { margin-top: 0; }
 .team-heading > p { max-width: 315px; margin: 0 0 3px; color: #717970; font-size: 16px; line-height: 1.8; }
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 19px; }
 .team-card { min-width: 0; }
-.team-portrait { min-height: 235px; position: relative; display: grid; place-items: center; overflow: hidden; }
-.team-portrait::before, .team-portrait::after { content: ""; position: absolute; width: 190px; height: 190px; border: 1px solid #17231e20; border-radius: 50%; }
-.team-portrait::after { width: 130px; height: 130px; }
+.team-portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.team-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
 .team-portrait.sage { background: #d7dfca; }
 .team-portrait.peach { background: #e8d8cd; }
 .team-portrait.blue { background: #d1dfdf; }
@@ -882,23 +941,6 @@ h1, h2, h3, p { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   .focus-orbit { transition: none; }
   .ticker-track { animation: none; }
-}
-
-/* Fincept palette from the supplied moodboard. */
-:root {
-  --paper: #FFFEF9;
-  --ink: #260325;
-  --green: #031B04;
-  --lime: #67A26A;
-  --muted: #526553;
-  --line: #C3E0C5;
-  --sage: #67A26A;
-  --tea: #C3E0C5;
-  --amethyst: #AD7AA4;
-  --lavender: #F1E8F2;
-  --violet: #260325;
-  background: var(--paper);
-  color: var(--ink);
 }
 body { color: var(--ink); background: var(--paper); }
 ::selection { color: var(--paper); background: var(--amethyst); }
